@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
 
   def create
     doctor_and_patients
-    @appointment = Appointment.new appointment_params
+    @appointment = Appointment.new(appointment_params)
     if @appointment.save
       flash[:notice] = 'Consulta agendada com sucesso!'
       redirect_to root_url
@@ -61,7 +61,7 @@ class AppointmentsController < ApplicationController
   end
 
   def renderiza(view)
-    @doctors = Doctor.all
+    doctor_and_patients
     render view
   end
 end
