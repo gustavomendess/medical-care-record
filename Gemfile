@@ -60,4 +60,10 @@ end
 
 group :production do
   gem 'pg', '~> 0.15'
+  gem 'byebug'
+  gem 'cpf_cnpj'
+  gem 'httparty'
+  gem 'pry'
+  gem 'validators'
+  gem 'will_paginate-bootstrap'
 end
