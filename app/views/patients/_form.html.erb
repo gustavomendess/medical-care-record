@@ -2,6 +2,13 @@
   <%= javascript_include_tag '/javascripts/views/patients/edit' %>
 <% end %>
 
+<% @patient.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
+
 <%= form_for @patient do |form| %>
   <div class="row">
     <div class="col-sm-8">
