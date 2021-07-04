@@ -5,7 +5,7 @@ class Doctor < ActiveRecord::Base
   validate :duplicated_doctor
 
   def attributes_presence
-    errors.add(:base, I18n.t('errors.appointments.no_name')) if name.empty?
+    errors.add(:base, I18n.t('errors.appointments.no_name')) if name.nil?
     errors.add(:base, I18n.t('errors.appointments.no_crm')) if crm.nil?
     errors.add(:base, I18n.t('errors.appointments.no_crm_uf')) if crm_uf.nil?
   end
