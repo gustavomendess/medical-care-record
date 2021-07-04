@@ -1,0 +1,32 @@
+<% content_for :js do %>
+  <%= javascript_include_tag '/javascripts/views/patients/edit' %>
+<% end %>
+
+<%= form_for @patient do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Nome' %>
+        <%= form.text_field :name, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Data de aniversário' %>
+        <%= form.date_field :birth_date, class:"form-control", rows:4%>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'CPF' %>
+        <%= form.text_field :cpf, class:"form-control", maxlength: "14"%>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit texto_da_acao, class:"btn btn-primary"%>
+<% end %>

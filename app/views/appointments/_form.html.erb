@@ -1,0 +1,51 @@
+<%= form_for @appointment do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Data do atendimento' %>
+        <%= form.date_field :appointment_date, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Horário inicial do atendimento' %>
+        <%= form.time_field :starts_at, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Horário final do atendimento' %>
+        <%= form.time_field :ends_at, class:"form-control", rows:4%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Doutor' %>
+        <%= form.collection_select :doctor_id, @doctors, :id, :name, {}, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Paciente' %>
+        <%= form.collection_select :patient_id, @patients, :id, :name, {}, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'Descrição do atendimento' %>
+        <%= form.text_field :appointment_description, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+  <%= form.submit texto_da_acao, class:"btn btn-primary"%>
+<% end %>

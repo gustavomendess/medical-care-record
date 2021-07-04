@@ -1,0 +1,23 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <td><b>Nome</b></td>
+      <td><b>CRM</b></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @doctors %>
+  </tbody>
+</table>
+<%= will_paginate @appointments, renderer: BootstrapPagination::Rails, previous_label: 'Primeira', next_label: 'Última' %>

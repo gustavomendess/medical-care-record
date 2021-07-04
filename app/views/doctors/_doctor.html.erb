@@ -1,0 +1,9 @@
+<tr>
+  <td><%= doctor.name %></td>
+  <td><%= doctor.crm.to_s + ' - ' + doctor.crm_uf.to_s %></td>
+  <td> <%= link_to "Alterar", edit_doctor_path(doctor), class:"btn btn-default"%> </td>
+  <td><%= button_to "Remover", doctor,
+          method: :delete,
+          class:"btn btn-danger",
+          data: {confirm: "Tem certeza que quer remover o doutor?"} %></td>
+</tr>

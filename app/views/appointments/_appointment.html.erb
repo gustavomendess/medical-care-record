@@ -1,0 +1,13 @@
+<tr>
+  <td><%= appointment.appointment_date.strftime("%d/%m/%Y") %></td>
+  <td><%= appointment.starts_at.strftime("%H:%M") %></td>
+  <td><%= appointment.ends_at.strftime("%H:%M") %></td>
+  <td><%= appointment.patient.name %></td>
+  <td><%= appointment.doctor.name %></td>
+  <td><%= appointment.appointment_description %></td>
+  <td> <%= link_to "Alterar", edit_appointment_path(appointment), class:"btn btn-default"%> </td>
+  <td><%= button_to "Remover", appointment,
+          method: :delete,
+          class:"btn btn-danger",
+          data: {confirm: "Tem certeza que quer remover a consulta?"} %></td>
+</tr>

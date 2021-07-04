@@ -1,0 +1,10 @@
+<% dashboard.each do |d| %>
+  <tr>
+    <td><%= d.appointment_date.strftime("%d/%m/%Y") %></td>
+    <td><%= d.starts_at.strftime("%H:%M") %></td>
+    <td><%= d.ends_at.strftime("%H:%M") %></td>
+    <td><%= d.patient.name %></td>
+    <td><%= d.doctor.name %></td>
+    <td><%= d.appointment_description %></td>
+  </tr>
+<% end %>

@@ -1,0 +1,36 @@
+<%= form_for @doctor do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label :Nome %>
+        <%= form.text_field :name, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'CRM' %>
+        <%= form.number_field :crm, class:"form-control", rows:4%>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label 'UF do CRM' %><br>
+        <select name="doctor[crm_uf]" class="form-control">
+          <% @ufs.each_with_index do |uf, key| %>
+            <% uf = uf.slice('sigla').values[0] %>
+            <% if key == 0 && texto_da_acao == 'Atualizar'%>
+              <option value="<%= @doctor.crm_uf %>"><%= @doctor.crm_uf %></option>
+            <% end %>
+            <option value="<%= uf %>"><%= uf %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit texto_da_acao, class:"btn btn-primary"%>
+<% end %>

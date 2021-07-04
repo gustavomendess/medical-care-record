@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <td><b>Nome</b></td>
+      <td><b>Data de aniversário</b></td>
+      <td><b>CPF</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @patients %>
+  </tbody>
+</table>
+<%= will_paginate @appointments, renderer: BootstrapPagination::Rails, previous_label: 'Primeira', next_label: 'Última' %>

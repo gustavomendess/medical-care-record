@@ -1,0 +1,7 @@
+pt-BR:
+  errors: 
+    appointments:
+      not_in_appointment_times: 'Os atendimentos acontecem entre as 09:00 e as 12:00, as 13:00 e as 18:00. Favor informar um horário dentro desse intervalo'
+      appointment_minutes: 'Não são permitidas consultas com duração excedente a 30 minutos'
+      appointment_by_date_time: 'Para o horário (%{starts_at}) até (%{ends_at}) do dia (%{appointment_date}) já existe uma consulta agendada'
+      inconsistent_hours: 'O horário inicial do atendimento deve ser antes do horário final'

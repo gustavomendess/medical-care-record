@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consultas médicas</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= nav_bar brand: "Atendimentos médicos", brand_link: root_url do %>
+    <%= menu_group do %>
+    <%= menu_divider %>
+      <%= drop_down "Consultas" do %>
+        <%= menu_item "Cadastrar consultas", new_appointment_path %>
+        <%= menu_item "Listagem de consultas", appointments_path %>
+      <% end %>
+      <%= drop_down "Médicos" do %>
+        <%= menu_item "Cadastrar médicos", new_doctor_path %>
+        <%= menu_item "Listagem de médicos", doctors_path %>
+      <% end %>
+      <%= menu_divider %>
+      <%= drop_down "Pacientes" do %>
+        <%= menu_item "Cadastrar pacientes", new_patient_path %>
+        <%= menu_item "Listagem de pacientes", patients_path %>
+      <% end %>
+      <%= menu_item "Dashboard", dashboards_path %>
+    <% end %>
+  <% end %>
+  <div class="container">
+  <%= yield %>
+  </div>
+
+</body>
+<div class="container">
+<footer class="page-footer font-small">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <a href="https://github.com/gustavomendess"> <font color="red"> Gustavo Mendes </font></a>
+    </div>
+</footer>
+</div>
+</html>

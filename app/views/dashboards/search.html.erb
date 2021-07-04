@@ -1,0 +1,29 @@
+<%= nav_bar brand: "Filtros por médico", brand_link: dashboards_path  do %>
+    <%= menu_group do %>
+      <%= form_tag search_dashboards_path, method: :get,
+       class:"navbar-form navbar-right" do %>
+        <div class="form-group">
+            <%= collection_select(:doctor, :id, @doctors, :id, :name, {prompt: @doctor.name.to_s}, {class: 'form-control'})  %>
+            <%= button_to "Buscar", nil, class:"btn btn-default"%>
+        </div>
+      <% end %>
+      <%= menu_item "Total de consultas realizadas: #{@appointments_by_doctor}" %>
+      <%= menu_item "Pacientes diferentes atendidos: #{@patients_by_doctor}" %>
+    <% end %>
+<% end %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <td><b>Data do atendimento</b></td>
+      <td><b>Hora inicial</b></td>
+      <td><b>Hora final</b></td>
+      <td><b>Paciente</b></td>
+      <td><b>Doutor</b></td>
+      <td><b>Descrição</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'dashboard', object: @dashboards  %>
+  </tbody>
+</table>
