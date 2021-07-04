@@ -1,8 +1,14 @@
 class Doctor < ActiveRecord::Base
   has_many :appointment, dependent: :restrict_with_error
 
-  validates :name, :crm, :crm_uf, presence: true
+  validate :attributes_presence
   validate :duplicated_doctor
+
+  def attributes_presence
+    errors.add(:base, I18n.t('errors.appointments.no_name')) if name.empty?
+    errors.add(:base, I18n.t('errors.appointments.no_crm')) if crm.nil?
+    errors.add(:base, I18n.t('errors.appointments.no_crm_uf')) if crm_uf.nil?
+  end
 
   def duplicated_doctor
     return unless new_record?
