@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Patient do
   it 'is valid with valid attributes' do
     expect(Patient.new).to_not be_valid
