@@ -19,7 +19,7 @@ class DoctorsController < ApplicationController
     pick_ufs
     @doctor = Doctor.new(doctor_params)
     if @doctor.save
-      redirect_to doctors_url, notice: 'Doutor criado com sucesso!'
+      redirect_to doctors_url, notice: 'Médico criado com sucesso!'
     else
       render :new
     end
@@ -28,18 +28,18 @@ class DoctorsController < ApplicationController
   def update
     pick_ufs
     if @doctor.update(doctor_params)
-      redirect_to doctors_url, notice: 'Doutor atualizado com sucesso!'
+      redirect_to doctors_url, notice: 'Médico atualizado com sucesso!'
     else
-      flash[:notice] = 'Não foi possível atualizar o doutor'
+      flash[:notice] = 'Não foi possível atualizar o médico'
       render :edit
     end
   end
 
   def destroy
     if @doctor.destroy
-      redirect_to doctors_url, notice: 'Doutor apagado com sucesso!'
+      redirect_to doctors_url, notice: 'Médico apagado com sucesso!'
     else
-      flash[:error] = 'Não é possível apagar doutor pois ele possui atendimentos cadastrados'
+      flash[:error] = 'Não é possível apagar o médico pois ele possui atendimentos cadastrados'
       redirect_to doctors_url
     end
   end
