@@ -3,12 +3,13 @@
       <%= form_tag search_dashboards_path, method: :get,
        class:"navbar-form navbar-right" do %>
         <div class="form-group">
-            <%= collection_select(:doctor, :id, @doctors, :id, :name, {prompt: @doctor.name.to_s}, {class: 'form-control'})  %>
+            <%= collection_select(:doctor, :id, @doctors, :id, :name, {include_blank: 'Todos os médicos'}, {class: 'form-control'})  %>
             <%= button_to "Buscar", nil, class:"btn btn-default"%>
         </div>
       <% end %>
       <%= menu_item "Total de consultas realizadas: #{@appointments_by_doctor}" %>
       <%= menu_item "Pacientes diferentes atendidos: #{@patients_by_doctor}" %>
+      <%= menu_item "Dados do médico: #{@doctor.name.to_s}" %>
     <% end %>
 <% end %>
 
