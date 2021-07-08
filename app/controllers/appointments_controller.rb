@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:edit, :destroy, :update]
+  before_action :set_appointment, only: %i[edit destroy update]
+  before_action :doctor_and_patients, only: %i[new edit create update]
 
   def index
     @appointments = Appointment.order(starts_at: :asc)
@@ -8,32 +9,28 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-    doctor_and_patients
   end
 
   def edit
-    doctor_and_patients
-    renderiza :edit
-  end
-
-  def update
-    doctor_and_patients
-    if @appointment.update appointment_params
-      flash[:notice] = 'Consulta atualizada com sucesso!'
-      redirect_to root_url
-    else
-      renderiza :edit
-    end
+    render :edit
   end
 
   def create
-    doctor_and_patients
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
       flash[:notice] = 'Consulta agendada com sucesso!'
       redirect_to root_url
     else
-      renderiza :new
+      render :new
+    end
+  end
+
+  def update
+    if @appointment.update appointment_params
+      flash[:notice] = 'Consulta atualizada com sucesso!'
+      redirect_to root_url
+    else
+      render :edit
     end
   end
 
@@ -58,10 +55,5 @@ class AppointmentsController < ApplicationController
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
-  end
-
-  def renderiza(view)
-    doctor_and_patients
-    render view
   end
 end
