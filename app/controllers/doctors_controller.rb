@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:edit, :update, :destroy]
+  before_action :set_doctor, only: %i[edit update destroy]
+  before_action :pick_ufs, only: %i[new edit create update]
 
   def index
     @doctors = Doctor.all
@@ -7,16 +8,12 @@ class DoctorsController < ApplicationController
   end
 
   def new
-    pick_ufs
     @doctor = Doctor.new
   end
 
-  def edit
-    pick_ufs
-  end
+  def edit; end
 
   def create
-    pick_ufs
     @doctor = Doctor.new(doctor_params)
     if @doctor.save
       redirect_to doctors_url, notice: 'Médico criado com sucesso!'
@@ -26,7 +23,6 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    pick_ufs
     if @doctor.update(doctor_params)
       redirect_to doctors_url, notice: 'Médico atualizado com sucesso!'
     else
