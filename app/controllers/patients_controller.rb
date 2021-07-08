@@ -1,21 +1,21 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: %i[show edit update destroy]
 
   def index
-    @patients = Patient.all.paginate(page: params[:page], per_page: 5)
+    @patients = Patient.all
+                       .paginate(page: params[:page], per_page: 5)
   end
 
   def show
     @appointment_by_patient = Appointment.where('patient_id = ?',
-                                                 params[:id])
+                                                params[:id])
   end
 
   def new
     @patient = Patient.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @patient = Patient.new(patient_params)
