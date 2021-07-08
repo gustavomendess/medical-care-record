@@ -13,8 +13,7 @@ class Patient < ActiveRecord::Base
     return if cpf.nil?
 
     self.cpf = cpf.gsub(/[^\d]/, '')
-    if Patient.where(cpf: cpf).exists?
-      errors[:base] << 'Cpf já está em uso'
-    end
+    duplicated_cpf = Patient.where(cpf: cpf).exists?
+    errors.add(:base, 'Cpf já está em uso') if duplicated_cpf
   end
 end

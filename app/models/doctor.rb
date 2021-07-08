@@ -13,8 +13,7 @@ class Doctor < ActiveRecord::Base
   def duplicated_doctor
     return unless new_record?
 
-    if Doctor.where(crm: crm, crm_uf: crm_uf).exists?
-      errors.add(:base, "O CRM (#{crm} - #{crm_uf}) já está em uso")
-    end
+    duplicated = Doctor.where(crm: crm, crm_uf: crm_uf).exists?
+    errors.add(:base, "O CRM (#{crm} - #{crm_uf}) já está em uso") if duplicated
   end
 end
