@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: %i[edit destroy update]
+  before_action :appointment, only: %i[edit destroy update]
   before_action :doctor_and_patients, only: %i[new edit create update]
 
   def index
@@ -53,7 +53,7 @@ class AppointmentsController < ApplicationController
                                         :doctor_id, :appointment_description)
   end
 
-  def set_appointment
+  def appointment
     @appointment = Appointment.find(params[:id])
   end
 end
