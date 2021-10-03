@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: %i[edit update destroy]
-  before_action :pick_ufs, only: %i[new edit create update]
+  before_action :doctor, only: %i[edit update destroy]
+  before_action :ufs, only: %i[new edit create update]
 
   def index
     @doctors = Doctor.all
@@ -42,11 +42,11 @@ class DoctorsController < ApplicationController
 
   private
 
-  def pick_ufs
-    @ufs = HTTParty.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+  def ufs
+    @ufs = IbgeDataService.new.ufs
   end
 
-  def set_doctor
+  def doctor
     @doctor = Doctor.find(params[:id])
   end
 
