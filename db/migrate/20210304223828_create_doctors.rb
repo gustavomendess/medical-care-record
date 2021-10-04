@@ -5,5 +5,6 @@ class CreateDoctors < ActiveRecord::Migration
       t.integer :crm
       t.string :crm_uf
     end
+    add_index :doctors, [:crm, :crm_uf], unique: true
   end
 end
